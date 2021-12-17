@@ -13,24 +13,24 @@ At HelloFresh, our mission is to change the way people eat - forever. From our 2
 We offer our meal kit boxes full of exciting recipes and thoughtfully sourced, fresh ingredients in more than 15 countries, operating from offices in Berlin, New York City, Sydney, Toronto, London, Amsterdam and Copenhagen and shipped out more than 570 Million meals in 2020.
 
 ### Data Engineering at HelloFresh
-We ingest events from our Kafka Stream and store them in our DataLake on s3. 
+We ingest events from our Kafka cluster and store them in our Data Lake on S3. 
 Events are sorted by arriving date. For example `events/recipe_changes/2019/11/29`.
-During events processing we heavily rely on execution day to make sure we pick proper chunk of data and keep historical results.
-We use Apache Spark to work with data and store it on s3 in parquet format. Our primary programming language is Python.
+During events processing we heavily rely on execution day to make sure we pick proper chunks of data and keep historical results.
+We use Apache Spark to work with data and store it on S3 in parquet format. Our primary programming language is Python.
 
 # Exercise
 ## Overview
 At HelloFresh we have a big recipes archive that was created over the last 8 years. 
 It is constantly being updated either by adding new recipes or by making changes to existing ones. 
-We have a service that can dump archive in JSON format to selected s3 location. 
+We have a service that can ingest data in JSON format to a selected S3 location. 
 We are interested in tracking changes to see available recipes, their cooking time and difficulty level.
 
 ## Task 1
-Using Apache Spark and Python, read, pre-process and persist rows to ensure optimal structure and performance for further processing.  
+Using Apache Spark and Python, read the source data, pre-process it and persist (write) it to ensure optimal structure and performance for further processing.  
 The source events are located on the `input` folder. 
 
 ## Task 2
-Using Apache Spark and Python read processed dataset from Task 1 and: 
+Using Apache Spark and Python read the processed dataset from Task 1 and: 
 1. Extract only recipes that have `beef` as one of the ingredients.
 2. Calculate average cooking time duration per difficulty level.
 3. Persist dataset as CSV to the `output` folder.  
@@ -49,7 +49,7 @@ Criteria for levels based on total cook time duration:
 
 ## Deliverables
 - A deployable Spark Application written in Python.
-- A separate `ETL_README.md` file with a brief explanation of the approach, data exploration and assumptions/considerations. 
+- A separate `ETL_README.md` file with a brief explanation of the approach, data exploration, assumptions/considerations and instructions on how to run the application. 
 - CSV output dataset from Task 2.
 
 ## Requirements
@@ -61,7 +61,7 @@ Criteria for levels based on total cook time duration:
 - Logging.
 - Documentation.
 
-NOTE: If you are using code in your submission that was not written by you, please be sure to attribute it to it's original author.
+_Note: If you are using code in your submission that was not written by you, please be sure to attribute it to its original author._
 
 ## Bonus points
 - Config management.
@@ -69,6 +69,6 @@ NOTE: If you are using code in your submission that was not written by you, plea
 - How would you implement CI/CD for this application?
 - How would you diagnose and tune the application in case of performance problems?
 - How would you schedule this pipeline to run periodically?
-- We appreciate good combination of Software and Data Engineering.
+- We appreciate a combination of Software and Data Engineering good practices.
 
 Good Luck!
