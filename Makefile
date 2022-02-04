@@ -1,4 +1,4 @@
 SHELL=/bin/bash
 
-run:
+test:
 	run test_etl_job.py
